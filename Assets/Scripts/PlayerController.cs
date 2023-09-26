@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public string inputId;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +25,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Receive Player input
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal" + inputId);
+        forwardInput = Input.GetAxis("Vertical" + inputId);
 
         // Move vehicle forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         // Turn vehicle
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
 
-        if (Input.GetKeyDown(switchKey))
+        if (Input.GetKeyDown(switchKey) && (inputId == "1"))
         {
             mainCamera.enabled = !mainCamera.enabled;
             povCamera.enabled = !povCamera.enabled;
