@@ -16,7 +16,7 @@ public class AiMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move vehicle towards player
+        // Move vehicle forwards
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
     }
